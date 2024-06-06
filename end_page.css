@@ -32,3 +32,20 @@ body {
     font-size: 20px;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+.next-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px 80px;
+    border: 2px solid white;
+    border-radius: 20px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.next-button:hover {
+    background-color: #45a049;
+}

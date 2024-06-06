@@ -2,14 +2,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const cards = document.querySelectorAll('.card');
     let flippedCard = null;
     let matchesFound = 0;
-    const totalMatches = 6; 
+    const totalMatches = 6;
+    let wrongMovesLeft = 6;
 
-    /*const pinkImages = ["url1", "url2", "url3", "url4", "url5", "url6"];
+    const wrongMovesLeftButton = document.createElement('button');
+    wrongMovesLeftButton.textContent = `Wrong Moves Left: ${wrongMovesLeft}`;
+    wrongMovesLeftButton.style.position = 'absolute';
+    wrongMovesLeftButton.style.top = '10px';
+    wrongMovesLeftButton.style.right = '10px';
+    document.body.appendChild(wrongMovesLeftButton);
 
-    function getRandomPinkImage() {
-        return pinkImages[Math.floor(Math.random() * pinkImages.length)];
-    }*/
-    
+    const popup = document.getElementById('match-popup');
+    const closePopupButton = document.getElementById('close-popup');
+
+    closePopupButton.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
+
     cards.forEach(card => {
         card.addEventListener('click', () => {
             if (card.classList.contains('flipped')) {
@@ -45,7 +54,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (fruit[0].toUpperCase() === letter) {
             matchesFound++;
-            setTimeout(() => alert("That's a match!"), 500);
+            setTimeout(() => {
+                popup.style.display = 'flex';
+                setTimeout(() => {
+                    popup.style.display = 'none';
+                }, 2000); // Close the popup after 2 seconds
+            }, 500);
 
             if (matchesFound === totalMatches) {
                 setTimeout(() => {
@@ -56,6 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 card1.classList.remove('flipped');
                 card2.classList.remove('flipped');
+                wrongMovesLeft--;
+                wrongMovesLeftButton.textContent = `Wrong Moves Left: ${wrongMovesLeft}`;
+                if (wrongMovesLeft === 0) {
+                    setTimeout(() => {
+                        window.location.href = 'loss_page.html';
+                    }, 500);
+                }
             }, 1000);
         }
     }

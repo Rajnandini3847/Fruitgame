@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Main Page</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="main_page.css">
 </head>
 <body>
     <div class="container">
@@ -62,7 +62,16 @@
                 <div class="back">P</div>
             </div>
         </div>
-        <a href="end_page.html" class="end-button main">End</a>
+        <button id="wrongMovesLeftBtn">Wrong Moves Left: 6</button>
+        <a href="end_page.html" class="next-button main">End</a>
+    </div>
+
+
+    <div id="match-popup" class="popup">
+        <div class="popup-content">
+            <h2>Wohoo! That's a match!</h2>
+            <button id="close-popup">Close</button>
+        </div>
     </div>
 
     <script src="script.js"></script>
